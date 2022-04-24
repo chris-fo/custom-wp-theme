@@ -1,0 +1,495 @@
+/*
+Theme Name: Custom WP Theme
+Text Domain: customwptheme
+Version: 1.0
+Author: Chris
+Author URI: https://coder-chris.com/
+Description: WordPress Theme
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+/* -------------------------------------------------------------------------- */
+/*	CSS Reset
+/* -------------------------------------------------------------------------- */
+
+
+html,
+body {
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+address,
+big,
+cite,
+code,
+em,
+font,
+img,
+small,
+strike,
+sub,
+sup,
+li,
+ol,
+ul,
+fieldset,
+form,
+label,
+legend,
+button,
+table,
+caption,
+tr,
+th,
+td {
+	border: none;
+	font-size: inherit;
+	line-height: inherit;
+	margin: 0;
+	padding: 0;
+	text-align: inherit;
+}
+
+blockquote::before,
+blockquote::after {
+	content: "";
+}
+
+/* -------------------------------------------------------------------------- */
+/*	Colors
+/* -------------------------------------------------------------------------- */
+
+:root {
+    --sb-color-calcite: #FFFFFF;
+    --sb-color-lighter-grey: #F2F2F2;
+    --sb-color-light-grey: #F4F4F4;
+    --sb-color-medium-grey: #7D7D7D;
+    --sb-color-dark-grey: #262626;
+    --sb-color-grey: #FAFAFA;
+    --sb-color-orange-accent: #F27623;
+    --sb-color-orange-light: #ECAB80;
+    --sb-color-orange-dark: #E95E30;
+
+    
+    --sb-font-color-dark: #2B2B2B;
+    --sb-font-color-medium: #868686;
+    --sb-font-color-light: #FAFAFA;
+    --sb-font-color-disabled: #C5C5C5;
+}
+
+/* -------------------------------------------------------------------------- */
+/*	Document Setup
+/* -------------------------------------------------------------------------- */
+
+html {
+	font-size: 62.5%; /* 1rem = 10px */
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+body {
+	background: var(--sb-color-calcite);
+	box-sizing: border-box;
+	color: var(--sb-font-color-dark);
+	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 1.8rem;
+	letter-spacing: -0.015em;
+	text-align: left;
+    max-width: 1024px;
+    margin: auto;
+}
+
+@supports ( font-variation-settings: normal ) {
+
+	body {
+		font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+	}
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+	-webkit-font-smoothing: antialiased;
+	word-break: break-word;
+	word-wrap: break-word;
+}
+
+#site-content {
+	overflow: hidden;
+}
+
+/* -------------------------------------------------------------------------- */
+/*	Utility Classes
+/* -------------------------------------------------------------------------- */
+
+.hidden {
+    display: none;
+}
+
+/* -------------------------------------------------------------------------- */
+/*	Fonts
+/* -------------------------------------------------------------------------- */
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url(./assets/fonts/Proxima\ Nova\ Font.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Proxima Nova Bold';
+    src: url(./assets/fonts/Proxima-Nova-Bold.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Proxima Nova Italic';
+    src: url(./assets/fonts/Proxima-Nova-Italic.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Proxima Nova Light';
+    src: url(./assets/fonts/Proxima-Nova-Light.otf) format('opentype');
+}
+
+.base-font { 
+    font-family: 'Proxima Nova', Arial, Helvetica, sans-serif;
+}
+
+/* -------------------------------------------------------------------------- */
+/*	Headings and Paragraphs
+/* -------------------------------------------------------------------------- */
+
+h1 {
+    font-family: 'Proxima Nova Bold', Arial, Helvetica, sans-serif;
+    font-size: 48px;
+    line-height: 58px;
+    color: var(--sb-color-calcite);
+}
+
+h2 {
+    font-family: 'Proxima Nova Bold', Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 24px;
+}
+
+h3 {
+    font-family: 'Proxima Nova Bold', Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 8px;
+}
+
+p {
+    font-family: 'Proxima Nova', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 19px;
+    color: var(--sb-font-color-medium);
+}
+
+/* -------------------------------------------------------------------------- */
+/*	Custom Styles
+/* -------------------------------------------------------------------------- */
+
+#page {
+    background: var(--sb-color-light-grey);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+footer {
+    background-color: var(--sb-color-dark-grey);
+    flex-shrink: 0;
+    font-size: 12px;
+    line-height: 15px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer p {
+    color: var(--sb-color-calcite);
+}
+
+.header {
+    background-image: url(./assets/images/background.png);
+    background-color: rgba(0, 0, 0, 0.4);
+    background-blend-mode: darken;
+    background-size: auto 250px;
+    background-repeat: no-repeat;
+    height: min(250px, 45vh);
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin-top: 27px;
+}
+
+nav ul a {
+    text-decoration: none;
+    color: var(--sb-color-calcite);
+}
+
+nav ul a:hover {
+    border-bottom: 2px solid var(--sb-color-orange-dark);
+}
+
+nav .current-menu-item,
+nav .current_page_item {
+    border-bottom: 2px solid var(--sb-color-orange-dark);
+}
+
+.logo {
+    max-height: 71px;
+    max-width: min(40vw, 301px);
+    margin-right: 15vw;
+}
+
+.page-title {
+    flex-basis: 100%;
+    text-align: center;
+}
+
+.blog-posts-container {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 22px;
+    background-color: var(--sb-color-calcite);
+    padding: 24px;
+}
+
+.blog-posts-container nav {
+    flex-basis: 100%;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.blog-posts-container nav .page-numbers {
+    font-family: 'Proxima Nova', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+    color: var(--sb-font-color-dark);
+}
+
+.blog-posts-container nav .current {
+    font-family: 'Proxima Nova Bold', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding: 10px;
+    background-color: var(--sb-color-lighter-grey);
+    border-radius: 18px;
+}
+
+.blog-posts-container nav .next {
+    color: var(--sb-color-orange-accent);
+}
+
+.content-container {
+    flex: 1 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 22px;
+    padding: 49.5px;
+}
+
+.home-form-container,
+.home-posts-container,
+.single-post-container,
+.index-container {
+    flex: 1;
+    background-color: var(--sb-color-calcite);
+    padding: 24px;
+}
+
+.index-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.home-posts-container {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.home-featured-image {
+    object-fit: cover;
+    max-height: 100%;
+}
+
+.blog-post-card {
+    width: 200px;
+    height: 263px;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px 0px;
+}
+
+.blog-post-card .post-card-header {
+    padding: 8px 16px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    height: 72px;
+    max-height: 72px;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-size: cover;
+}
+
+.blog-post-card .post-card-header span {
+    font-family: 'Proxima Nova Italic', Arial, Helvetica, sans-serif;
+    font-size: 8px;
+    line-height: 9px;
+    color: var(--sb-color-calcite);
+}
+
+.blog-post-card a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.blog-post-card .post-card-header span a {
+    color: var(--sb-color-calcite);
+}
+
+.blog-post-card .post-card-content {
+    max-height: 191px;
+    padding: 20px 24px 20px 16px;
+}
+
+.blog-post-card .post-card-inner-content {
+    height: 151px;
+    overflow: hidden;
+}
+
+/* Form Styles */
+
+.home-form-container {
+    max-width: 430px;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.home-form-container .text-input,
+.home-form-container textarea,
+.home-form-container select {
+    height: 40px;
+    width: 100%;
+    background-color: var(--sb-color-grey);
+    margin-top: 8px;
+    margin-bottom: 24px;
+    border: none;
+    font-family: 'Proxima Nova Italic', Arial, Helvetica, sans-serif;
+}
+
+.select-custom.select-placeholder {
+    color: var(--sb-font-color-disabled);
+}
+
+.select-custom option {
+    color: var(--sb-font-color-dark);
+}
+
+.home-form-container textarea {
+    height: 214px;
+}
+
+.home-form-container .text-input::placeholder {
+    color: var(--sb-font-color-disabled);
+}
+
+#upload-image-container {
+    margin-top: 8px;
+    margin-bottom: 24px;
+}
+
+.home-form-container .content-input{
+    height: 214px;
+}
+
+#upload-image-container {
+    display: inline-block;
+    padding: 11px 18px 13px 15px;
+    background-color: var(--sb-color-grey);
+}
+
+#upload-image-container label {
+    margin-left: 16px;
+    background-color: var(--sb-color-medium-grey);
+    color: var(--sb-font-color-light);
+    padding: 7px 15px;
+    border-radius: 15px;
+    font-family: 'Proxima Nova Light', Arial, Helvetica, sans-serif;
+    font-size: 10px;
+}
+
+#upload-image-container label:hover {
+    background-color: var(--sb-color-dark-grey);
+    cursor: pointer;
+}
+
+.button-container {
+    width: 100%;
+}
+
+.customwptheme-button {
+    display: block;
+    font-family: 'Proxima Nova Bold', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 15px;
+    color: var(--sb-color-calcite);
+    background-color: var(--sb-color-orange-accent);
+    border-radius: 18px;
+    padding: 8.5px 46px 7.5px;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.customwptheme-button:hover {
+    background-color: var(--sb-color-orange-light);
+    cursor: pointer;
+}
+
+.single-post-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 49.5px;
+    gap: 22px;
+}
+
+.single-post-container a {
+    color: var(--sb-color-orange-accent);
+    text-decoration: none;
+}
